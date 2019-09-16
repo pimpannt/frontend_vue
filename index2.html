@@ -1,0 +1,38 @@
+<!--Lab 2 Insert Button to Change property in vue object->
+<!-declare method inside vue object-->
+<html>
+  <head>
+    <title>Vue 101</title>
+  </head>
+
+  <body>
+    <h1>Hello!</h1>
+    <div id="app">
+        <p>My local property: {{ myLocalProperty }}</p>
+        <hr>
+        <button @click="buttonClicked">Click me</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <script>
+        const app = new Vue({
+            el: '#app', // 1
+            data: { // 2
+                myLocalProperty: 'Im a local property value' // 3
+            },
+            methods: {
+                buttonClicked(){
+                    const str = "pp is sexy"
+                    this.myLocalProperty = str;//4
+                }
+            }
+        });
+    </script>
+  </body>
+</html>
+
+<!--v-on:click is equal to @click-->
+
+<!--to change property name-->
+<!--<button @click="myLocalProperty = 'The button has been clicked'">-->
