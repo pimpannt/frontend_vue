@@ -1,0 +1,26 @@
+<!--Lab 6 Basic Vue Componenet-->
+<html>
+<head>
+    <title>Vue 101</title>
+</head>
+<body>
+    <div id = "app">
+        <age-calculator></age-calculator>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        Vue.component('age-calculator',{
+            template: `
+            <p>
+                NAME has been kicking butt for X days!
+            </p>
+            `
+        });
+        const app = new Vue({
+            el : '#app'
+        });
+    </script>
+</body>
+</html>
