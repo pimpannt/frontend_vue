@@ -1,0 +1,38 @@
+<!--Lab 3 Insert v-if and v-else ->
+<!-Different bewteen v-if and v-else-->
+<!--Can Apply vue dev tool to debug code-->
+<html>
+  <head>
+    <title>Vue 101</title>
+  </head>
+
+  <body>
+    <h1>Hello!</h1>
+    <div id="app">
+        <p>My local property: {{ myLocalProperty }}</p>
+        <hr>
+        <button @click="buttonClicked">Click me</button>
+        <!-- 1 -->
+        <p v-if="randomNumber >= 50">randomNumber is >= 50!</p>
+        <!-- 2 -->
+        <p v-else>Sorry, randomNumber is only <b>{{ randomNumber }}</b></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <script>
+        const app = new Vue({
+            el: '#app', // 1
+            data: { // 2
+                myLocalProperty: 'Im a local property value',
+                randomNumber: 0 // 3
+            },
+            methods: {
+                buttonClicked(){
+                    this.randomNumber = Math.floor(Math.random() * 100);//4
+                }
+            }
+        });
+    </script>
+  </body>
+</html>
