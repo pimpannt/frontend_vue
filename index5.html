@@ -1,0 +1,59 @@
+<!--Lab 6 Basic Vue Componenet-->
+<!--introduce v-for-->
+<!--introduce 'template' property for vue component-->
+<!--introduce 'props' property for vue component-->
+<!--introduce 'computed' property for vue component-->
+<!--https://vuejs.org/v2/guide/components.html-->
+<!--https://vuejs.org/v2/guide/computed.html-->
+
+<html>
+<head>
+    <title>Vue 101</title>
+</head>
+<body>
+    <div id = "app">
+        <age-calculator 
+            v-for="person in people"
+            :person="person"
+            :key="person.name"></age-calculator>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+       Vue.component('age-calculator', {
+        props: {
+            person: {
+            type: Object,
+            required: true
+            }
+        },
+        template: `
+        <p>
+            {{ person.name }} has been kicking butt for {{ daysAlive }} days!
+        </p>
+        `,
+        computed: {
+            daysAlive() { //Remember, computed props are functions in the end
+                return this.person.age * 365
+            }
+        }
+        });
+        const app = new Vue({
+            el: '#app',
+            data: {
+                people: [
+                  { name: 'Mario', age: 38 },
+                  { name: 'Luigi', age: 38 },
+                  { name: 'Samus', age: 31 },
+                  { name: 'Link', age: 20 },
+                  { name: 'Marina', age: 32 },
+                  { name: 'Pimpan', age: 23 }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
+
+<!--'computed' property is different from method that computed will use caching but method is not-->
