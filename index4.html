@@ -1,3 +1,4 @@
+<!--Lab 4 Learn v-for -->
 <html>
 
 <head>
@@ -6,9 +7,13 @@
 
 <body>
   <div id="app">
-    <ul>
-      <li v-for="game in games">{{ game }}</li>
-    </ul>
+    <div v-for="game in games">
+      <h1>{{ game.name }} - <small>{{ game.console }}</small></h1>
+  
+      <span v-for="star in game.rating">❤️</span>
+  
+      <div v-if="game.rating > 5">Wow, this game must be <b>REALLY</b> good</div>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -18,10 +23,11 @@
       el: '#app',
       data: {
         games: [
-          'Super Mario 64',
-          'The Legend of Zelda Ocarina of Time',
-          'Secret of Mana',
-          'Super Metroid'
+          { name: 'Super Mario 64', console: 'Nintendo 64', rating: 4 },
+          { name: 'The Legend of Zelda Ocarina of Time', console: 'Nintendo 64', rating: 5 },
+          { name: 'Secret of Mana', console: 'Super Nintendo', rating: 4 },
+          { name: 'Fallout 76', console: 'Multiple', rating: 1 },
+          { name: 'Super Metroid', console: 'Super Nintendo', rating: 6 }
         ]
       },
       methods: {
