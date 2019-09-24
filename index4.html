@@ -1,4 +1,7 @@
 <!--Lab 4 Learn v-for -->
+<!--Key Attribute https://vuejs.org/v2/guide/list.html#Maintaining-State-->
+
+
 <html>
 
 <head>
@@ -6,15 +9,15 @@
 </head>
 
 <body>
-  <div id="app">
-    <div v-for="game in games">
-      <h1>{{ game.name }} - <small>{{ game.console }}</small></h1>
-  
-      <span v-for="star in game.rating">❤️</span>
-  
-      <div v-if="game.rating > 5">Wow, this game must be <b>REALLY</b> good</div>
-    </div>
+<div id="app">
+  <div v-for="game in games" :key="game.name">
+    <h1>{{ game.name }} - <small>{{ game.console }}</small></h1>
+    <span v-for="star in game.rating" @click="buttonClicked(game)">⭐</span>
+    <div v-if="game.rating > 5">Wow, this game must be <b>REALLY</b> good</div>
+    <!-- <button @click="buttonClicked">Click me</button> -->
+    <!-- <p>{{randomNumber}}</p> -->
   </div>
+</div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
@@ -22,16 +25,19 @@
     const app = new Vue({
       el: '#app',
       data: {
-        games: [
-          { name: 'Super Mario 64', console: 'Nintendo 64', rating: 4 },
-          { name: 'The Legend of Zelda Ocarina of Time', console: 'Nintendo 64', rating: 5 },
-          { name: 'Secret of Mana', console: 'Super Nintendo', rating: 4 },
-          { name: 'Fallout 76', console: 'Multiple', rating: 1 },
-          { name: 'Super Metroid', console: 'Super Nintendo', rating: 6 }
-        ]
+          games: [
+            { name: 'Super Mario 64', console: 'Nintendo 64', rating: 4 },
+            { name: 'The Legend of Zelda Ocarina of Time', console: 'Nintendo 64', rating: 5 },
+            { name: 'Secret of Mana', console: 'Super Nintendo', rating: 4 },
+            { name: 'Fallout 76', console: 'Multiple', rating: 1 },
+            { name: 'Super Metroid', console: 'Super Nintendo', rating: 6 }
+          ],
+          randomNumber: 0
       },
       methods: {
-
+          buttonClicked(game){
+            game.rating++;
+          }
       }
     });
   </script>
