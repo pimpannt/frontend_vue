@@ -1,4 +1,5 @@
 <!--Lab 5 Introduce Vue Component -->
+<!--Introduce Component Props -->
 <html>
 
 <head>
@@ -7,7 +8,9 @@
 
 <body>
   <div id="app">
-  <awesome-button></awesome-button>
+    <awesome-button></awesome-button>
+    <hr>
+    <game-card v-for="game in games" :game-data="game" :key="game.name"></game-card>    
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -16,16 +19,38 @@
     Vue.component('awesome-button', {
         template: `<button @click="clickHandler">Click me for some awesomeness</button>`,
         methods: {
-        clickHandler() {
+            clickHandler() {
             alert('YAAAS 😎');
+            }
         }
+    });
+
+    Vue.component('game-card',{
+        props: ['gameData'],
+        template: `
+            <div style="border-radius: .25rem; border: 1px solid #ECECEC; width: 400px; margin: 1rem; padding: 1rem;">
+                <h2>{{ gameData.name }} - <small>{{ gameData.console }}</small></h2>    
+                <span v-for="heart in gameData.rating">❤️</span>
+                <button @click="increaseRating">Increase Rating</button>
+            </div>
+        `,
+        methods: {
+            increaseRating() {
+            // this.game.rating++ ?
+            }
         }
     });
 
     const app = new Vue({
       el: '#app',
       data: {
-
+        games: [
+            { name: 'Super Mario 64', console: 'Nintendo 64', rating: 4 },
+            { name: 'The Legend of Zelda Ocarina of Time', console: 'Nintendo 64', rating: 5 },
+            { name: 'Secret of Mana', console: 'Super Nintendo', rating: 4 },
+            { name: 'Fallout 76', console: 'Multiple', rating: 1 },
+            { name: 'Super Metroid', console: 'Super Nintendo', rating: 6 }
+        ]
       }
     });
   </script>
