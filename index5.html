@@ -25,22 +25,28 @@
         }
     });
 
+    //note: in methods Vue cannot read property
     Vue.component('game-card',{
+        //need to create new object 'game' to use inside component
         props: ['gameData'],
+        data() {
+            return {
+            game: {...this.gameData}
+            }
+        },
         template: `
             <div style="border-radius: .25rem; border: 1px solid #ECECEC; width: 400px; margin: 1rem; padding: 1rem;">
-                <h2>{{ gameData.name }} - <small>{{ gameData.console }}</small></h2>    
-                <span v-for="heart in gameData.rating">❤️</span>
+                <h2>{{ game.name }} - <small>{{ game.console }}</small></h2>    
+                <span v-for="heart in game.rating">❤️</span>
                 <button @click="increaseRating">Increase Rating</button>
             </div>
         `,
         methods: {
             increaseRating() {
-            // this.game.rating++ ?
+                this.game.rating++;
             }
-        }
+        },
     });
-
     const app = new Vue({
       el: '#app',
       data: {
