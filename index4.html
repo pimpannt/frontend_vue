@@ -12,7 +12,7 @@
 <div id="app">
   <div v-for="game in games" :key="game.name">
     <h1>{{ game.name }} - <small>{{ game.console }}</small></h1>
-    <span v-for="star in game.rating" @click="buttonClicked(game)">⭐</span>
+    <span v-for="star in game.rating" @click="addrating(game)">⭐</span>
     <div v-if="game.rating > 5">Wow, this game must be <b>REALLY</b> good</div>
     <!-- <button @click="buttonClicked">Click me</button> -->
     <!-- <p>{{randomNumber}}</p> -->
@@ -35,7 +35,7 @@
           randomNumber: 0
       },
       methods: {
-          buttonClicked(game){
+            addrating(game){
             game.rating++;
           }
       }
