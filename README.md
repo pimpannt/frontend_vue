@@ -1,11 +1,5 @@
-Start 16/Sep/2019
-Lab
-https://dev.to/vuevixens/hands-on-vuejs-for-beginners-part-1-2j2g
+Start 1/Oct/2019
 
-https://scrimba.com/
-
-
-to see difference before commit 
-`git diff HEAD index7.html`
-or 
-`git diff HEAD`
+create new branch
+`git branch ppBranch`
+`git push origin ppBranch`
